@@ -1,4 +1,4 @@
-LAB3_DATA_VIZ_M1BDIA
+LAB4_DATA_VIZ
 
 - create a virtual env : dz_env, and activate it on the shell
 
