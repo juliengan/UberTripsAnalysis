@@ -43,7 +43,7 @@ def load_bar():
 
 #D E C O R A T O R S
 #log execution time
-@st.cache(suppress_st_warning=True) 
+@st.cache(suppress_st_warning=True, allow_output_mutation=True) 
 def log(func):
     def wrapper(*args,**kwargs):
         with open("logs.txt","a") as f:
