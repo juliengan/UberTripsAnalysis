@@ -11,9 +11,7 @@ import streamlit.components.v1 as components
 import os
 
 ###############################################  F  U  N  C  T  I  O  N  S  ##########################
-def load_data(URL):
-    data=pd.read_csv(URL)
-    return data
+
 
 def get_dom(dt):
     return dt.day 
@@ -59,6 +57,11 @@ def log(func):
 def run(a,b,c=9):
     print(a+b+c )
 
+
+@log
+def load_data(URL):
+    data=pd.read_csv(URL)
+    return data
 #######################################  Data visualizations  ##############################################
 #@log
 def point_cloud():
@@ -76,7 +79,7 @@ def point_cloud():
 def dataset_print():
     expander = st.expander("Whole Dataset")
     expander.write(data)
-@log
+#@log
 def heatmap():
     seaborn = st.expander("Heatmap")
 
@@ -87,7 +90,7 @@ def heatmap():
     plt.title('Heatmap')
     seaborn.pyplot(fig)
 
-@log
+#@log
 def histogram_dom():
     histo = st.expander("Histogram - Day of the month")
     fig2, ax2 = plt.subplots()
@@ -98,7 +101,7 @@ def histogram_dom():
     plt.ylabel("Frequency")
     histo.pyplot(fig2)
 
-@log
+#@log
 def histogram_hour():
     histo = st.expander("Histogram - Hour of the day")
     fig3, hours = plt.subplots()
@@ -109,7 +112,7 @@ def histogram_hour():
     plt.ylabel("Frequency")
     histo.pyplot(fig3)
 
-@log
+#@log
 def histogram_weekdays():
     weekdays = st.expander("Histogram - Weekdays")
     fig4, weekdaysax = plt.subplots()
@@ -121,21 +124,21 @@ def histogram_weekdays():
     weekdays.pyplot(fig4)
 
 
-@log
+#@log
 def map():
     mapexp = st.expander("Map")
     map_data = pd.DataFrame(np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],columns=['lat', 'lon'])
     mapexp.map(map_data)
     mapexp.write("The map is still in construction...")
 
-@log
+#@log
 def dataframe_print():
     chart_data = pd.DataFrame(
     np.random.randn(20, 3),
     columns=['a', 'b', 'c'])
     #st.line_chart(chart_data)
 
-@log
+#@log
 def twiny():
     twiny = st.expander("Twiny figure")
     ig,axes=plt.subplots()
