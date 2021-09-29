@@ -1,12 +1,6 @@
-pip
-python
-streamlit
-numpy
-seaborn
-pandas
-altair
-matplotlib.pyplot
-time
-PIL #Optional for the moment
-datetime
-os
+matplotlib==3.2.1
+numpy==1.18.5
+pandas==1.0.4
+scipy==1.4.1              # via seaborn
+seaborn==0.10.1
+streamlit==0.82.0
