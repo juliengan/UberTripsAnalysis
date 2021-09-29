@@ -58,7 +58,7 @@ def run(a,b,c=9):
     print(a+b+c )
 
 
-@log
+#@log
 def load_data(URL):
     data=pd.read_csv(URL)
     return data
