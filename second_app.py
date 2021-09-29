@@ -60,7 +60,7 @@ def run(a,b,c=9):
     print(a+b+c )
 
 #######################################  Data visualizations  ##############################################
-@log
+#@log
 def point_cloud():
     pointcloud = st.expander("Point Cloud")
     df = pd.DataFrame(
