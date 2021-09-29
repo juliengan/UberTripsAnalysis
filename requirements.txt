@@ -1,0 +1,12 @@
+pip
+python
+streamlit
+numpy
+seaborn
+pandas
+altair
+matplotlib.pyplot
+time
+PIL #Optional for the moment
+datetime
+os

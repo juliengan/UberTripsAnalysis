@@ -1,0 +1,7 @@
+Called function with 0.12292957305908203 seconds 
+Called function with 1.1643338203430176 seconds 
+Called function with 0.7975444793701172 seconds 
+Called function with 0.7425758838653564 seconds 
+Called function with 0.5067107677459717 seconds 
+Called function with 0.0179898738861084 seconds 
+Called function with 0.0 seconds 
