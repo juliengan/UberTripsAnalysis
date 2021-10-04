@@ -167,34 +167,19 @@ def twiny():
 #load_bar()
 
 
-st.title('LAB3 - Julie NGAN')
+st.title('LAB4 - Julie NGAN')
 st.write('Here you can consult the trips and see information about the schedule and longitude/latitude from this list')
 
-
-
-
-
-
 dfdash = pd.DataFrame({
-'trips': ["Uber Trips in January, 2014", "NY Trips the 15th of January, 2015","Chat"],
+'trips': ["Uber Trips in January, 2014", "NY Trips the 15th of January, 2015","Chat","Appendices"],
 })
 
 
 #S I D E   B A R / M E N U
 title = st.sidebar.title('Menu 🍔')
-st.sidebar.write(dfdash)
 option = st.sidebar.selectbox(
 'Choose the trips',
 dfdash['trips'])
-
-
-chart_data = pd.DataFrame(
-    np.random.randn(20, 3),
-    columns=['a', 'b', 'c'])
-
-#st.sidebar.line_chart(chart_data)
-
-
 
 st.write('You selected:', option)
 
@@ -271,88 +256,88 @@ if option == "Chat":
         st.markdown("You've clicked %s times!" % int(num_clicks))
 
 ############## Expanders ##################
-
-dataset_print()
-point_cloud()
-heatmap()
-histogram_dom()
-histogram_hour()
-histogram_weekdays()
-map()
-dataframe_print()
-#twiny()
+if option != "Chat" and option != "Appendices":
+    dataset_print()
+    point_cloud()
+    heatmap()
+    histogram_dom()
+    histogram_hour()
+    histogram_weekdays()
+    map()
+    dataframe_print()
+    #twiny()
 
 ##############################################
 
-
-components.html(
-    """
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <div id="accordion">
-      <div class="card">
-        <div class="card-header" id="headingOne">
-          <h5 class="mb-0">
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Shakespeare 📚
-            </button>
-          </h5>
+if option =="Appendices":
+    components.html(
+        """
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <div id="accordion">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Shakespeare 📚
+                </button>
+            </h5>
+            </div>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                <iframe src="https://informationisbeautiful.net/visualizations/words-shakespeare-invented/" title="Shakespeare's invented words" ,width=1024,height=768)
+            </div>
+            </div>
         </div>
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-          <div class="card-body">
-            <iframe src="https://informationisbeautiful.net/visualizations/words-shakespeare-invented/" title="Shakespeare's invented words" ,width=1024,height=768)
-          </div>
-        </div>
-      </div>
 
-      <div class="card">
-        <div class="card-header" id="headingTwo">
-          <h5 class="mb-0">
-            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            Point Cloud
-            </button>
-          </h5>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Point Cloud
+                </button>
+            </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                <iframe src="https://informationisbeautiful.net/visualizations/words-shakespeare-invented/" title="Shakespeare's invented words" ,width=1024,height=768)
+            </div>
+            </div>
         </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-          <div class="card-body">
-            <iframe src="https://informationisbeautiful.net/visualizations/words-shakespeare-invented/" title="Shakespeare's invented words" ,width=1024,height=768)
-          </div>
-        </div>
-      </div>
 
 
+        </div>
+        """,
+        height=600
+    )
+
+    components.iframe("https://informationisbeautiful.net/visualizations/words-shakespeare-invented/", width=1024,height=768)
+
+    components.iframe("https://pudding.cool/2021/04/music-bubble/", width=1024,height=768)
+
+
+
+
+
+
+
+    components.html(
+    '''<div class="footer container-xl width-full p-responsive" role="contentinfo">
+    <div class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between pt-6 pb-2 mt-6 f6 color-text-secondary border-top color-border-secondary ">
+        <ul class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+        <li class="mr-3 mr-lg-0">2021 Julie Ngan, LAB3</li>
+        <li class="mr-3 mr-lg-0">Streamlit, caching and components</li>
+
+        </ul>
+
+        
     </div>
-    """,
-    height=600
-)
-
-components.iframe("https://informationisbeautiful.net/visualizations/words-shakespeare-invented/", width=1024,height=768)
-
-components.iframe("https://pudding.cool/2021/04/music-bubble/", width=1024,height=768)
-
-
-
-
-
-
-
-components.html(
-'''<div class="footer container-xl width-full p-responsive" role="contentinfo">
-  <div class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between pt-6 pb-2 mt-6 f6 color-text-secondary border-top color-border-secondary ">
-    <ul class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
-      <li class="mr-3 mr-lg-0">2021 Julie Ngan, LAB3</li>
-      <li class="mr-3 mr-lg-0">Streamlit, caching and components</li>
-
-    </ul>
-
-    
-  </div>
-  <div class="d-flex flex-justify-center pb-6">
-    <span class="f6 color-text-tertiary"></span>
-  </div>
-</div>'''
-)
+    <div class="d-flex flex-justify-center pb-6">
+        <span class="f6 color-text-tertiary"></span>
+    </div>
+    </div>'''
+    )
 
 
 
