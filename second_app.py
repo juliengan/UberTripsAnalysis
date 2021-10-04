@@ -253,7 +253,7 @@ if option == "NY Trips the 15th of January, 2015":
         st.subheader("Component with variable args")
         name_input = st.text_input("Enter a name", value="Jeanne")
         num_clicks = my_component(name_input, key="foo")
-        st.markdown("You've clicked %s times!" % int(num_clicks))''''
+        st.markdown("You've clicked %s times!" % int(num_clicks))'''
 
 ############## Expanders ##################
 if option != "Chat" and option != "Appendices":
