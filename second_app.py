@@ -12,16 +12,22 @@ import os
 
 ###############################################  F  U  N  C  T  I  O  N  S  ##########################
 
-
+@st.cache(allow_output_mutation=True)
 def get_dom(dt):
     return dt.day 
 
+
+@st.cache(allow_output_mutation=True)
 def get_weekday(dt):
     return dt.weekday()
 
+
+@st.cache(allow_output_mutation=True)
 def get_hour(dt):
     return dt.hour
 
+
+@st.cache(allow_output_mutation=True)
 def count_rows(rows): 
     return len(rows)
 
@@ -59,6 +65,7 @@ def run(a,b,c=9):
 
 
 #@log
+@st.cache(allow_output_mutation=True)
 def load_data(URL):
     data=pd.read_csv(URL)
     return data
