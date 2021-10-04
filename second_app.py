@@ -191,7 +191,7 @@ def my_component(greeting, name, key=None):
 if not _RELEASE:
     import streamlit as st
     st.subheader("Say Hello !")
-    num_clicks = my_component("Beautiful")
+    num_clicks = my_component("What's up","Beautiful")
     st.markdown("You've clicked %s times!" % int(num_clicks))
     st.markdown("---")
     st.subheader("Component with variable args")
