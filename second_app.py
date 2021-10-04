@@ -198,17 +198,17 @@ if option == "Uber Trips in January, 2014":
 
     #image = Image.open("uber.png")
     #st.image(image, width=None)
+    
     data=load_data("uber-raw-data-apr14.csv")
     
 #D A T A   T R A N S F O R M A T I O N
-#def data_transformation(data):
     data['Date/Time'] = pd.to_datetime(data['Date/Time'])
 
     data['dom'] = data['Date/Time'].map(get_dom)
     data['weekday'] = data['Date/Time'].map(get_weekday)
     data['Hour'] = data['Date/Time'].map(get_hour)
 
-        #hours = plt.hist(data['Hour'], range = (0.5, 24), bins = 24)
+    #hours = plt.hist(data['Hour'], range = (0.5, 24), bins = 24)
     
 
 
