@@ -65,7 +65,7 @@ def run(a,b,c=9):
 
 
 #@log
-@st.cache(allow_output_mutation=True)
+#@st.cache(allow_output_mutation=True)
 def load_data(URL):
     data=pd.read_csv(URL)
     return data
@@ -168,7 +168,6 @@ def twiny():
 
 
 st.title('LAB4 - Julie NGAN')
-st.write('Here you can consult the trips and see information about the schedule and longitude/latitude from this list')
 
 dfdash = pd.DataFrame({
 'trips': ["Uber Trips in January, 2014", "NY Trips the 15th of January, 2015","Chat","Appendices"],
@@ -195,6 +194,8 @@ if st.sidebar.checkbox('Subscribe'):
         st.sidebar.write("Well received!")
 
 if option == "Uber Trips in January, 2014":
+    st.write('Here you can consult the trips and see information about the schedule and longitude/latitude from this list')
+
     #image = Image.open("uber.png")
     #st.image(image, width=None)
     data=load_data("uber-raw-data-apr14.csv")
@@ -212,6 +213,8 @@ if option == "Uber Trips in January, 2014":
 
 
 if option == "NY Trips the 15th of January, 2015":
+    st.write('Here you can consult the trips and see information about the schedule and longitude/latitude from this list')
+
    # image = Image.open('NY trips.jpg')
    # st.image(image, width=None)
     data=load_data("ny-trips-data.csv")
@@ -225,7 +228,7 @@ if option == "NY Trips the 15th of January, 2015":
     data['weekday'] = data['tpep_pickup_datetime'].map(get_weekday)
     data['Hour'] = data['tpep_pickup_datetime'].map(get_hour)
 
-'''if option == "Chat":
+if option == "Chat":
     _RELEASE = False
 
     if not _RELEASE:
@@ -239,21 +242,22 @@ if option == "NY Trips the 15th of January, 2015":
         _component_func = components.declare_component("my_component", path=build_dir)
 
     #bi directional component
-    def my_component(name, key=None):
-        component_value = _component_func(name=name, key=key, default=0)
+    def my_component(greeting,name, key=None):
+        component_value = _component_func(greeting=greeting,name=name, key=key, default=0)
         return component_value
 
 
     if not _RELEASE:
         import streamlit as st
         st.subheader("Say Hello !")
-        num_clicks = my_component("Beautiful")
+        num_clicks = my_component("What's up","Beautiful")
         st.markdown("You've clicked %s times!" % int(num_clicks))
         st.markdown("---")
-        st.subheader("Component with variable args")
+        st.subheader("Chat 📱")
+        greeting_input = st.text_input("Enter a greeting message",value="Hello")
         name_input = st.text_input("Enter a name", value="Jeanne")
-        num_clicks = my_component(name_input, key="foo")
-        st.markdown("You've clicked %s times!" % int(num_clicks))'''
+        num_clicks = my_component(greeting_input, name_input)
+        st.markdown("You've clicked %s times!" % int(num_clicks))
 
 ############## Expanders ##################
 if option != "Chat" and option != "Appendices":
