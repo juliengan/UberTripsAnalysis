@@ -225,7 +225,7 @@ if option == "NY Trips the 15th of January, 2015":
     data['weekday'] = data['tpep_pickup_datetime'].map(get_weekday)
     data['Hour'] = data['tpep_pickup_datetime'].map(get_hour)
 
-if option == "Chat":
+'''if option == "Chat":
     _RELEASE = False
 
     if not _RELEASE:
@@ -253,7 +253,7 @@ if option == "Chat":
         st.subheader("Component with variable args")
         name_input = st.text_input("Enter a name", value="Jeanne")
         num_clicks = my_component(name_input, key="foo")
-        st.markdown("You've clicked %s times!" % int(num_clicks))
+        st.markdown("You've clicked %s times!" % int(num_clicks))''''
 
 ############## Expanders ##################
 if option != "Chat" and option != "Appendices":
