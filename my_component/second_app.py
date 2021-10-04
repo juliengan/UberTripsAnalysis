@@ -183,8 +183,8 @@ else:
     _component_func = components.declare_component("my_component", path=build_dir)
 
 #bi directional component
-def my_component(greeting, name, key=None):
-    component_value = _component_func(greeting = greeting, name=name, key=key, default=0)
+def my_component(name, key=None):
+    component_value = _component_func(name=name, key=key, default=0)
     return component_value
 
 

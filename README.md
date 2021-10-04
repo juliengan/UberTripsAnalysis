@@ -4,6 +4,7 @@ LAB4_DATA_VIZ
 
 -> on windows : dz_env\Scripts\activate
 -> on Linux : source dz_env/bin/activate
+-> start a shell fron frontend directory and 'npm install' and 'npm run start'
 
 - streamlit run second_app.py
 
