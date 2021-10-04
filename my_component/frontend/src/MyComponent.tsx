@@ -68,9 +68,5 @@ class MyComponent extends StreamlitComponentBase<State> {
   }
 }
 
-// "withStreamlitConnection" is a wrapper function. It bootstraps the
-// connection between your component and the Streamlit app, and handles
-// passing arguments from Python -> Component.
-//
-// You don't need to edit withStreamlitConnection (but you're welcome to!).
+
 export default withStreamlitConnection(MyComponent)

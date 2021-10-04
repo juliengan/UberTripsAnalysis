@@ -194,7 +194,7 @@ if not _RELEASE:
     num_clicks = my_component("What's up","Beautiful")
     st.markdown("You've clicked %s times!" % int(num_clicks))
     st.markdown("---")
-    st.subheader("Component with variable args")
+    st.subheader("Chat 📱")
     greeting_input = st.text_input("Enter a greeting message",value="Hello")
     name_input = st.text_input("Enter a name", value="Jeanne")
     num_clicks = my_component(greeting_input, name_input, key="foo")
