@@ -170,40 +170,13 @@ def twiny():
 st.title('LAB3 - Julie NGAN')
 st.write('Here you can consult the trips and see information about the schedule and longitude/latitude from this list')
 
-_RELEASE = False
 
-if not _RELEASE:
-    _component_func = components.declare_component(
-        "my_component",
-        url="http://localhost:3001",
-    )
-else:
-    parent_dir = os.path.dirname(os.path.abspath(__file__))
-    build_dir = os.path.join(parent_dir, "frontend/build")
-    _component_func = components.declare_component("my_component", path=build_dir)
-
-#bi directional component
-def my_component(name, key=None):
-    component_value = _component_func(name=name, key=key, default=0)
-    return component_value
-
-
-if not _RELEASE:
-    import streamlit as st
-    st.subheader("Say Hello !")
-    num_clicks = my_component("Beautiful")
-    st.markdown("You've clicked %s times!" % int(num_clicks))
-    st.markdown("---")
-    st.subheader("Component with variable args")
-    name_input = st.text_input("Enter a name", value="Jeanne")
-    num_clicks = my_component(name_input, key="foo")
-    st.markdown("You've clicked %s times!" % int(num_clicks))
 
 
 
 
 dfdash = pd.DataFrame({
-'trips': ["Uber Trips in January, 2014", "NY Trips the 15th of January, 2015"],
+'trips': ["Uber Trips in January, 2014", "NY Trips the 15th of January, 2015","Chat"],
 })
 
 
@@ -213,6 +186,7 @@ st.sidebar.write(dfdash)
 option = st.sidebar.selectbox(
 'Choose the trips',
 dfdash['trips'])
+
 
 chart_data = pd.DataFrame(
     np.random.randn(20, 3),
@@ -266,7 +240,35 @@ if option == "NY Trips the 15th of January, 2015":
     data['weekday'] = data['tpep_pickup_datetime'].map(get_weekday)
     data['Hour'] = data['tpep_pickup_datetime'].map(get_hour)
 
+if option == "Chat":
+    _RELEASE = False
 
+    if not _RELEASE:
+        _component_func = components.declare_component(
+            "my_component",
+            url="http://localhost:3001",
+        )
+    else:
+        parent_dir = os.path.dirname(os.path.abspath(__file__))
+        build_dir = os.path.join(parent_dir, "frontend/build")
+        _component_func = components.declare_component("my_component", path=build_dir)
+
+    #bi directional component
+    def my_component(name, key=None):
+        component_value = _component_func(name=name, key=key, default=0)
+        return component_value
+
+
+    if not _RELEASE:
+        import streamlit as st
+        st.subheader("Say Hello !")
+        num_clicks = my_component("Beautiful")
+        st.markdown("You've clicked %s times!" % int(num_clicks))
+        st.markdown("---")
+        st.subheader("Component with variable args")
+        name_input = st.text_input("Enter a name", value="Jeanne")
+        num_clicks = my_component(name_input, key="foo")
+        st.markdown("You've clicked %s times!" % int(num_clicks))
 
 ############## Expanders ##################
 
