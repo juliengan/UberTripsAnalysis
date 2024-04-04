@@ -54,7 +54,6 @@ def log(func):
             before = time.time()
             func()
             f.write("Called function with " + str(time.time() - before) + " seconds " + "\n")
-            #f.write("Called function with " + " ".join([str(arg) for arg in args]) + " at " + str(datetime.datetime.now()) + "\n")
         val = func(*args,**kwargs)
         return val
     return wrapper
@@ -64,8 +63,6 @@ def run(a,b,c=9):
     print(a+b+c )
 
 
-#@log
-#@st.cache(allow_output_mutation=True)
 def load_data(URL):
     data=pd.read_csv(URL)
     return data
@@ -82,11 +79,11 @@ def point_cloud():
     pointcloud.write(c)
     pointcloud.markdown('**Point cloud is still in construction...**')
 
-#@timer
+
 def dataset_print():
     expander = st.expander("Whole Dataset")
     expander.write(data)
-#@log
+
 def heatmap():
     seaborn = st.expander("Heatmap")
 
@@ -97,7 +94,7 @@ def heatmap():
     plt.title('Heatmap')
     seaborn.pyplot(fig)
 
-#@log
+
 def histogram_dom():
     histo = st.expander("Histogram - Day of the month")
     fig2, ax2 = plt.subplots()
@@ -108,7 +105,7 @@ def histogram_dom():
     plt.ylabel("Frequency")
     histo.pyplot(fig2)
 
-#@log
+
 def histogram_hour():
     histo = st.expander("Histogram - Hour of the day")
     fig3, hours = plt.subplots()
@@ -119,7 +116,7 @@ def histogram_hour():
     plt.ylabel("Frequency")
     histo.pyplot(fig3)
 
-#@log
+
 def histogram_weekdays():
     weekdays = st.expander("Histogram - Weekdays")
     fig4, weekdaysax = plt.subplots()
@@ -131,21 +128,20 @@ def histogram_weekdays():
     weekdays.pyplot(fig4)
 
 
-#@log
 def map():
     mapexp = st.expander("Map")
     map_data = pd.DataFrame(np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],columns=['lat', 'lon'])
     mapexp.map(map_data)
     mapexp.write("The map is still in construction...")
 
-#@log
+
 def dataframe_print():
     chart_data = pd.DataFrame(
     np.random.randn(20, 3),
     columns=['a', 'b', 'c'])
     #st.line_chart(chart_data)
 
-#@log
+
 def twiny():
     twiny = st.expander("Twiny figure")
     ig,axes=plt.subplots()
@@ -159,12 +155,6 @@ def twiny():
     twiny.pyplot(ig)
 
 ############################################################################################"
-
-
-
-
-#run(1,3,c=9) 
-#load_bar()
 
 
 st.title('LAB4 - Julie NGAN')
@@ -184,9 +174,6 @@ st.write('You selected:', option)
 
 
 if st.sidebar.checkbox('Subscribe'):
-    #chart_data = pd.DataFrame(np.random.randn(20, 3),
-    #columns=['a', 'b', 'c'])
-    #st.write("")
     user_input = st.sidebar.text_area("Enter your email address", "gerard@hotmail.com")
     left_column, right_column = st.columns(2)
     pressed = st.sidebar.button('Enter')
@@ -195,35 +182,22 @@ if st.sidebar.checkbox('Subscribe'):
 
 if option == "Uber Trips in January, 2014":
     st.write('Here you can consult the trips and see information about the schedule and longitude/latitude from this list')
-
-    #image = Image.open("uber.png")
-    #st.image(image, width=None)
-    
     data=load_data("uber-raw-data-apr14.csv")
     
-#D A T A   T R A N S F O R M A T I O N
+    # Data transformation
     data['Date/Time'] = pd.to_datetime(data['Date/Time'])
-
     data['dom'] = data['Date/Time'].map(get_dom)
     data['weekday'] = data['Date/Time'].map(get_weekday)
     data['Hour'] = data['Date/Time'].map(get_hour)
 
-    #hours = plt.hist(data['Hour'], range = (0.5, 24), bins = 24)
-    
-
 
 if option == "NY Trips the 15th of January, 2015":
     st.write('Here you can consult the trips and see information about the schedule and longitude/latitude from this list')
-
-   # image = Image.open('NY trips.jpg')
-   # st.image(image, width=None)
     data=load_data("ny-trips-data.csv")
 
-    #D A T A   T R A N S F O R M A T I O N
+    # Data transformation on time
     data['tpep_pickup_datetime'] = pd.to_datetime(data['tpep_pickup_datetime'])
-
     data['tpep_dropoff_datetime'] = pd.to_datetime(data['tpep_dropoff_datetime'])
-
     data['dom'] = data['tpep_pickup_datetime'].map(get_dom)
     data['weekday'] = data['tpep_pickup_datetime'].map(get_weekday)
     data['Hour'] = data['tpep_pickup_datetime'].map(get_hour)
@@ -241,14 +215,13 @@ if option == "Chat":
         build_dir = os.path.join(parent_dir, "frontend/build")
         _component_func = components.declare_component("my_component", path=build_dir)
 
-    #bi directional component
+    # bi-directional component
     def my_component(greeting,name, key=None):
         component_value = _component_func(greeting=greeting,name=name, key=key, default=0)
         return component_value
 
 
     if not _RELEASE:
-        import streamlit as st
         st.subheader("Say Hello !")
         num_clicks = my_component("What's up","Beautiful")
         st.markdown("You've clicked %s times!" % int(num_clicks))
@@ -319,12 +292,6 @@ if option =="Appendices":
     components.iframe("https://informationisbeautiful.net/visualizations/words-shakespeare-invented/", width=1024,height=768)
 
     components.iframe("https://pudding.cool/2021/04/music-bubble/", width=1024,height=768)
-
-
-
-
-
-
 
     components.html(
     '''<div class="footer container-xl width-full p-responsive" role="contentinfo">
